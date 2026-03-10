@@ -13,6 +13,10 @@ export class CartPage {
         this.checkoutButton = page.getByRole('button', { name: 'Checkout' });
     }
 
+    async proceedToCheckout() {
+        await this.checkoutButton.click();
+    }
+
 
 
 }
