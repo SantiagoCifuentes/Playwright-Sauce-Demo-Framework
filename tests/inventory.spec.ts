@@ -21,4 +21,6 @@ test('inventory list', async ({ page }) => {
     ]); 
     await expect(inventoryPage.addToCartButtons).toHaveCount(6);
 
+  
+
 });
