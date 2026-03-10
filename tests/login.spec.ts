@@ -1,11 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../src/fixtures/TestFixture';
 import 'dotenv/config';
-import { LoginPage } from '../src/pages/LoginPage';
 
-test('correct login', async ({ page }) => {
 
-const loginPage = new LoginPage(page);
 
+test('correct login', async ({ page , loginPage}) => {
  await page.goto(process.env.BASE_URL!);
  await loginPage.login(process.env.SAUCEUSERNAME!, process.env.SAUCEPASSWORD!);
 
@@ -16,9 +14,7 @@ const loginPage = new LoginPage(page);
 });
 
 
-test('incorrect login', async ({ page }) => {
-
-    const loginPage = new LoginPage(page);
+test('incorrect login', async ({ page, loginPage }) => {
         await page.goto(process.env.BASE_URL!);
         await loginPage.login('wrong_user', 'wrong_password');
     

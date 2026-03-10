@@ -1,18 +1,9 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../src/pages/LoginPage';
-import { InventoryPage } from '../src/pages/InventoryPage';
-import { CartPage } from '../src/pages/CartPage';
-import { CheckoutPage } from '../src/pages/CheckoutPage';
+import { test, expect } from '../src/fixtures/TestFixture';
 import 'dotenv/config';
 
 
 
-test('checkout ', async ({ page }) => {
-
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
-    const cartPage = new CartPage(page);
-    const checkoutPage = new CheckoutPage(page);
+test('checkout ', async ({ page, loginPage, inventoryPage, cartPage, checkoutPage }) => {
 
     await page.goto(process.env.BASE_URL!);
     await loginPage.login(process.env.SAUCEUSERNAME!, process.env.SAUCEPASSWORD!);

@@ -1,11 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../src/fixtures/TestFixture';
 import 'dotenv/config';
-import { LoginPage } from '../src/pages/LoginPage';
-import { InventoryPage } from '../src/pages/InventoryPage';
 
-test('inventory list', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
+test('inventory list', async ({ page, loginPage, inventoryPage }) => {
 
     await page.goto(process.env.BASE_URL!);
     await loginPage.login(process.env.SAUCEUSERNAME!, process.env.SAUCEPASSWORD!);
