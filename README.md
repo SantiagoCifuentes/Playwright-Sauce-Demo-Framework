@@ -92,7 +92,7 @@ Variables used by the suite:
 Run the full suite:
 
 ```bash
-npx playwright test
+npm run test:e2e
 ```
 
 Run a single spec file:
@@ -110,15 +110,22 @@ npx playwright test --project=chromium
 Run tests by grep tag used in the test title:
 
 ```bash
-npx playwright test --grep @smoke
-npx playwright test --grep @regression
+npm run test:smoke
+npm run test:regression
 ```
 
 Open the HTML report after execution:
 
 ```bash
-npx playwright show-report
+npm run report
 ```
+
+Available npm scripts:
+
+- `npm run test:e2e`: runs the full Playwright suite
+- `npm run test:smoke`: runs tests tagged with `@smoke`
+- `npm run test:regression`: runs tests tagged with `@regression`
+- `npm run report`: opens the Playwright HTML report
 
 ## Reports
 
@@ -128,6 +135,20 @@ The framework generates:
 - JUnit report in `test-results/results.xml`
 
 These outputs are configured in `playwright.config.ts`.
+
+## GitHub Actions
+
+The repository includes a GitHub Actions workflow at `.github/workflows/playwright.yml`.
+
+The workflow:
+
+- runs on pushes to `main`
+- runs on pull requests targeting `main`
+- installs dependencies and Playwright browsers
+- executes the smoke suite with `npm run test:smoke`
+- uploads Playwright and JUnit results as workflow artifacts
+
+This keeps CI fast by validating the tagged smoke path on every change.
 
 ## Framework Design
 
