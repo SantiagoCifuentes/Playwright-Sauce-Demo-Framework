@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 
 
-test('correct login', async ({ page , loginPage}) => {
+test('correct login "@smoke user can login', async ({ page , loginPage}) => {
  await page.goto(process.env.BASE_URL!);
  await loginPage.login(process.env.SAUCEUSERNAME!, process.env.SAUCEPASSWORD!);
 

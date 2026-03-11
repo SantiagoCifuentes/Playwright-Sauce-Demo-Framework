@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 
 
-test('checkout ', async ({ page, loginPage, inventoryPage, cartPage, checkoutPage }) => {
+test('checkout @regression checkout flow ', async ({ page, loginPage, inventoryPage, cartPage, checkoutPage }) => {
 
     await page.goto(process.env.BASE_URL!);
     await loginPage.login(process.env.SAUCEUSERNAME!, process.env.SAUCEPASSWORD!);
